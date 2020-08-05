@@ -5,6 +5,11 @@ pipeline {
 			steps {
 				sh 'java -version'
 				sh 'echo "Welcome to declarative_Pipeline"'
+				
+                		sh '''
+                    		echo "Multiline shell steps"
+                 		ls –lah
+                		'''
 			}
 		}
 	}
