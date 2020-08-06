@@ -3,10 +3,11 @@ pipeline {
 	stages {
 		stage('Build') {
 			when {
-				expression {
-					"foo" == "bar"
-					}
-			}
+				allOf {
+					not { branch 'master' }
+					environment name: 'JOB_NAME', value: 'foo'
+				}
+							}
 			steps {
 				echo 'Building'
 				sh 'java -version'
