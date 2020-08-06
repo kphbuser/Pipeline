@@ -2,10 +2,15 @@ pipeline {
 	agent any
 	stages {
 		stage('Build') {
+			when {
+				expression {
+					"foo" == "bar"
+					}
+			}
 			steps {
 				echo 'Building'
 				sh 'java -version'
-				sh 'echo "Welcome to declarative_Pipeline"'
+				
 				              		
 			}
 		}
