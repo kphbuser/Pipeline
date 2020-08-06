@@ -3,18 +3,22 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
+				echo 'Building'
 				sh 'java -version'
 				sh 'echo "Welcome to declarative_Pipeline"'
 				              		
 			}
 		}
 		
-		stage('Deploy'){
+		stage('Test'){
 			steps {
-				timeout(time: 3, unit: 'MINUTES')
-					retry(4) {
-						powershell '.\flakey-deploy.ps1'
-					}
+				echo 'Testing'
+			}
+		}
+		
+		stage('Deploy') {
+			steps {
+				echo 'Deploying' 
 			}
 		}
 	}
