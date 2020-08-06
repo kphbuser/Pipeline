@@ -5,11 +5,16 @@ pipeline {
 			steps {
 				sh 'java -version'
 				sh 'echo "Welcome to declarative_Pipeline"'
-				
-                		sh '''
-                    		echo "Multiline shell steps"
-                 		ls –lah
-                		'''
+				              		
+			}
+		}
+		
+		stage('Deploy'){
+			steps {
+				timeout(time: 3, unit: 'MINUTES')
+					retry(4) {
+						powershell '.\flakey-deploy.ps1'
+					}
 			}
 		}
 	}
