@@ -16,5 +16,10 @@ pipeline {
                 echo 'Deploy'
             }
         }
+        stage('IncludeMVN') {
+            steps {
+                mvn 'clean install'
+            }
+        }
     }
 }
