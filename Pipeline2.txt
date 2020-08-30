@@ -18,7 +18,7 @@ pipeline {
         }
         stage('IncludeMVN') {
             steps {
-                sh 'mvn package'
+                sh 'mvn clean package -DskipTests'
             }
         }
     }
