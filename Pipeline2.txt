@@ -19,9 +19,14 @@ pipeline {
                 echo 'Deploy'
             }
         }
+        stage('Git'){
+            steps {
+                git 'https://github.com/kphbuser/Pipeline.git'
+            }
+        }
         stage('IncludeMVN') {
             steps {
-                sh 'clean install'
+                sh 'mvn clean install'
             }
         }
     }
