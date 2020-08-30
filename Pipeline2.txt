@@ -1,5 +1,8 @@
 pipeline {
     agent any 
+    tools {
+        maven "maven2"
+    }
     stages {
         stage('Build') {
             steps {
@@ -16,9 +19,9 @@ pipeline {
                 echo 'Deploy'
             }
         }
-        stage('maven2') {
+        stage('IncludeMVN') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh 'clean install'
             }
         }
     }
